@@ -3,7 +3,6 @@ Lucas Chacon
 Merge Sort 
 2/11/2018
 */
-
 var arrY=[];
 var arrX=[];
 var displayY = [];
@@ -13,26 +12,19 @@ var inLoopCounter =0;
 var displayTemp = [];
 function setup() {
   createCanvas(300,300);
- //frameRate(12);
-  
-  for(var i = 0;i<50;i++){
-    
+   for(var i = 0;i<50;i++){
     arrX[i]=i*6;
     arrY[i]=i*6;
-   
-    //arrShuffle(displayY[i]);
   }
-  
    for(var q =0;q<1000;q++){
     displayY[q]=[];
      for(var z =0;z<50;z++){
     displayY[q][z]=z;
   }
   }
- 
   arrShuffle(arrY);
   mergeSort(arrY,0,arrY.length-1);
-  console.log(inLoopCounter);
+  //console.log(inLoopCounter);
 }
 
 function draw() {
@@ -88,19 +80,15 @@ function merge(arr,lo,mid,hi){
       i++;
     }
   }
- 
 }
-
 function swap(arr, one,two){
    var temp = arr[one];
   arr[one] = arr[two];
   arr[two] = temp;
-  
 }
 function arrShuffle(arr){
   for(var s = 0;s<arr.length;s++){
     var choosen = floor(random(arr.length));
     swap(arr,s,choosen);
-   //console.log(arr[s]);
   }
 }

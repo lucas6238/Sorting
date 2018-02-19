@@ -1,23 +1,20 @@
 /*
 Lucas Chacon 
-Insert Sort
+Insertion Sort
 2/5/2018
 */
 var nodesX = [];
 var nodesY = [];
-displayY = [];
+var displayY = [];
 var iCounter = 0;
 var dCounter = 0;
 
 function setup() {
-  //noLoop();
-  //frameRate(10);
+ //noLoop();
   createCanvas(300,300);
   for(var i = 0;i<50;i++){
-    
     nodesY[i] = map(i,0,50,0,300);
     nodesX[i] = i;
-    
   }
   for(var j = 0;j<1000;j++){
     displayY[j]=[];
@@ -25,18 +22,13 @@ function setup() {
       displayY[j][q]= q;
     }
   }
-  
-  
   arrShuffle(nodesY);
   insertSort(nodesY);
-console.log(displayY.length);
-console.log(iCounter);
+//console.log(displayY.length);
+//console.log(iCounter);
 }
-
 function draw() {
-
    background(255);
-  
  //render the array
  if(dCounter>=iCounter){
    for(var j =0;j<displayY.length;j++){
@@ -55,9 +47,6 @@ function draw() {
     dCounter=0;
   }
 }
-
-
-
 function insertSort(arr){
    //Finds the lowest value to use as the inital starting point
   var lowest =0;
@@ -66,9 +55,7 @@ function insertSort(arr){
       lowest = f;
     } 
   }
-  // console.log(nodesY[lowest] + " is the lowest")
   swap(arr,f,0);
-  
    //sort the array
    var j;
   for(var i=2;i<arr.length;i++){
@@ -81,15 +68,8 @@ function insertSort(arr){
       iCounter++; 
     }
     arr[j] = v;
-    
-   
-    
     }
 }
-
-
-
-
 function arrShuffle(arr){
   var choosen =0;
   for(var s = 0;s<arr.length;s++){
@@ -97,7 +77,6 @@ function arrShuffle(arr){
     choosen = floor(random(arr.length));
     // console.log("choosen "+choosen);
     swap(arr,s,choosen);
-   
   }
 }
 function swap(arr, one,two){
@@ -105,7 +84,4 @@ function swap(arr, one,two){
   arr[one] = arr[two];
   arr[two] = temp;
   
-}
-function mousePressed(){
-  redraw();
 }

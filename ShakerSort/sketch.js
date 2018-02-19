@@ -1,10 +1,8 @@
 /*
 Lucas Chacon 
-Insert Sort
+Shaker Sort
 2/5/2018
 */
-var test = [];
-var gaps = [57,23,10,4,1];
 var nodesX = [];
 var nodesY = [];
 displayY = [];
@@ -12,10 +10,7 @@ displayY = [];
 var counter = 2;
 var sCounter =0;
 function setup() {
-  //frameRate(12);
-  //noLoop();
   createCanvas(300,300);
-  var counter =300;
   for(var i = 0;i<50;i++){ 
     nodesY[i] = i*6;
     nodesX[i] = i; 
@@ -26,34 +21,23 @@ function setup() {
     displayY[q][z]=z;
   }
   }
- 
-  
-  
   shuffleA(nodesY);
-  bubbleSort(nodesY);
-
+  ShakerSort(nodesY);
 }
-
 function draw() {
-
-   background(255);
-  
+   background(255); 
  //render the array
  if(counter>=sCounter){
     for(var i =0;i<displayY[sCounter].length;i++){
-    //noStroke();
     fill(
     map(displayY[sCounter-1][i],0,255,255,0),0,
-    map(displayY[sCounter-1][i],0,255,0,255));
-    //map(i,0,sCounter,255,0)
-    
+    map(displayY[sCounter-1][i],0,255,0,255)); 
     rect(nodesX[i]*6,displayY[sCounter-1][i],6,height); 
   }
  }
  else{
    
   for(var j =0;j<displayY.length;j++){
-    //noStroke();
     fill(map(displayY[counter][j],0,255,255,0),0,
     map(displayY[counter][j],0,255,0,255));
     rect(nodesX[j]*6,displayY[counter][j],6,height); 
@@ -66,10 +50,8 @@ function draw() {
   }
 }
 
-function bubbleSort(arr){
- 
+function ShakerSort(arr){
     var r = arr.length;
-   
     for(var i = 0;i<r;i++){
       if(i%2 === 0){
         for(var j=r-1;j>i-1;j--){
@@ -86,33 +68,21 @@ function bubbleSort(arr){
           if(nodesY[j+1] > nodesY[j]){
           swap(arr,j+1,j);
           arrayCopy(nodesY,0,displayY[sCounter],0,displayY[sCounter].length);
-          sCounter++;
-          
+          sCounter++;  
         }
      }
     }  
   }
-     
-            
-           
-  
 }
 function shuffleA(arr){
   for(var s = 0;s<arr.length;s++){
     var choosen = floor(random(arr.length));
     swap(arr,s,choosen);
   }
-  //console.log("array is shuffled with length "+arr.length);
 }
-function MousePressed(){
-  redraw();
-}
-
-
 function swap(arr, a,b){
   //console.log(arr.length);
    var temp = arr[a];
   arr[a] = arr[b];
   arr[b] = temp;
-  
 }
